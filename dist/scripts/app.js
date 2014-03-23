@@ -354,7 +354,7 @@ RAML.Inspector = (function() {
   };
 
   Basic.Token = function(credentials) {
-    var words = CryptoJS.enc.Utf8.parse(credentials.username + ':' + credentials.password);
+    var words = CryptoJS.enc.Utf8.parse(credentials.gameid + ' ' + credentials.uid + ' ' + credentials.sid + ':' + credentials.apikey);
     this.encoded = CryptoJS.enc.Base64.stringify(words);
   };
 
@@ -3028,14 +3028,25 @@ angular.module('ramlConsoleApp').run(['$templateCache', function($templateCache)
   $templateCache.put('views/basic_auth.tmpl.html',
     "<fieldset class=\"labelled-inline\" role=\"basic\">\n" +
     "  <div class=\"control-group\">\n" +
-    "    <label for=\"username\">Username:</label>\n" +
-    "    <input type=\"text\" name=\"username\" ng-model='credentials.username'/>\n" +
+    "    <label for=\"gameid\">Game Identifier:</label>\n" +
+    "    <input type=\"text\" name=\"gameid\" ng-model='credentials.gameid'/>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"control-group\">\n" +
-    "    <label for=\"password\">Password:</label>\n" +
-    "    <input type=\"password\" name=\"password\" ng-model='credentials.password'/>\n" +
+    "    <label for=\"apikey\">API Key:</label>\n" +
+    "    <input type=\"text\" name=\"apikey\" ng-model='credentials.apikey'/>\n" +
     "  </div>\n" +
+    "\n" +
+    "  <div class=\"control-group\">\n" +
+    "    <label for=\"uid\">User Identifier:</label>\n" +
+    "    <input type=\"text\" name=\"uid\" ng-model='credentials.uid'/>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"control-group\">\n" +
+    "    <label for=\"sid\">Session Identifier:</label>\n" +
+    "    <input type=\"text\" name=\"sid\" ng-model='credentials.sid'/>\n" +
+    "  </div>\n" +
+    "\n" +
     "</fieldset>\n"
   );
 
